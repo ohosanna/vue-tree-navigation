@@ -116,6 +116,7 @@ export const getItemMetadata = (item, parent) => {
   const element = sanitizeElement(item.element);
   const route = sanitizeRoute(item.route);
   const external = item.external;
+  const internal = item.internal;
 
   // item is its own parent
   if (parent === undefined) {
@@ -134,6 +135,13 @@ export const getItemMetadata = (item, parent) => {
       return {
         path: '',
         target: external,
+      };
+    }
+
+    if (internal !== undefined) {
+      return {
+        path: '',
+        target: internal,
       };
     }
 
@@ -158,6 +166,13 @@ export const getItemMetadata = (item, parent) => {
     return {
       path: parentPath,
       target: external,
+    };
+  }
+
+  if (internal !== undefined) {
+    return {
+      path: parentPath,
+      target: internal,
     };
   }
 

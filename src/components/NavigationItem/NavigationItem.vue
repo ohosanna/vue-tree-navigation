@@ -18,6 +18,11 @@
       class="NavigationItem__link">{{ item.name }}</a>
 
     <a
+      v-if="showInternalHyperLink"
+      :href="item.meta.target"
+      class="NavigationItem__internal-link">{{ item.name }}</a>
+
+    <a
       v-if="showExternalHyperLink"
       :href="item.meta.target"
       target="_blank"
@@ -54,7 +59,8 @@ export default {
       return (
         this.item.route === undefined &&
         this.item.element === undefined &&
-        this.item.external === undefined
+        this.item.external === undefined &&
+        this.item.internal === undefined
       );
     },
     showRouterLink() {
@@ -65,6 +71,9 @@ export default {
     },
     showExternalHyperLink() {
       return this.item.external !== undefined;
+    },
+    showInternalHyperLink() {
+      return this.item.internal !== undefined;
     },
     showLink() {
       return this.item.route !== undefined || this.item.element !== undefined;
