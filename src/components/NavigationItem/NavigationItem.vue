@@ -17,10 +17,10 @@
       :href="item.meta.target"
       class="NavigationItem__link">{{ item.name }}</a>
 
-    <a
+    <router-link
       v-if="showInternalHyperLink"
-      :href="item.meta.target"
-      class="NavigationItem__internal-link">{{ item.name }}</a>
+      :to="{path: item.meta.target}"
+      class="NavigationItem__internal-link">{{ item.name }}</router-link>
 
     <a
       v-if="showExternalHyperLink"
